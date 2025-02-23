@@ -1,0 +1,104 @@
+body {
+    margin: 20px;
+    background-color: #fff;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: "Sour Gummy", serif;
+}
+
+h1 {
+  font-family: "Luckiest Guy", serif;
+  font-weight: 400;
+  font-size: 40px;
+  font-style: normal;
+}
+
+.img {
+    height: 190px;
+    border-radius: 5%;
+    border: 2px solid green;
+}
+
+.img-2 {
+    position: relative;
+     max-width: 65px;
+     left: 120px;
+     top: 25px;
+  
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: lightgreen;
+    border-radius: 5%;
+    border: 2px solid green;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: lightblue;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    border: 2px solid green;
+    border-radius: 5px;
+    font-family: "Sour Gummy", serif;
+}
+
+.submit {
+    margin-top: 20px;
+    padding: 10px;
+    width: 30%;
+    border: none;
+    background: #28a745;
+    border: 2px solid green;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: "Sour Gummy", serif;
+ 
+}
+
+button:hover {
+    background: #218838;
+}
+
+.deleteBtn {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    background-color: red;
+    color: white;
+    border: green;
+    font-family: "Sour Gummy", serif;
+    line-height: 1.5;
+  
+}
+
+.updateBtn {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    background-color: blue;
+    color: white; 
+    border: green; 
+    font-family: "Sour Gummy", serif;
+}
