@@ -15,11 +15,11 @@ const PORT = 5002;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')))
 
-// Define path to the data file
+// Locate path to the data.json file
 const dataFilePath = path.join(__dirname, "data.json");
 
 
-// Function to read data from the JSON file
+// Function to read data from the data.json file
 const readData = () => {
   if (!fs.existsSync(dataFilePath)) {
     return [];
@@ -28,7 +28,7 @@ const readData = () => {
   return JSON.parse(data);
 };
 
-// Function to write data to the JSON file
+// Write data to the data.json file
 const writeData = (data) => {
   fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2));
 };
@@ -59,23 +59,19 @@ app.post("/echo", (req, res) => {
 });
 
 app.delete("/data/:id", (req, res) => {
-  const { id } = req.params;  // Get the task ID from the request URL
-  const currentData = readData();  // Read the current data (assuming it's an array)
+  const { id } = req.params;  
+  const currentData = readData();  
 
   // Find the index of the task to be deleted
   const taskIndex = currentData.findIndex(task => task.id === id);
 
   if (taskIndex !== -1) {
-    // If the task is found, remove it from the array
     currentData.splice(taskIndex, 1);
 
-    // Save the updated data back to storage
     writeData(currentData);
 
-    // Send a success response back to the client
     res.json({ message: "Task deleted successfully" });
   } else {
-    // If the task is not found, send a 404 error
     res.status(404).json({ message: "Task not found" });
   }
 });
@@ -83,7 +79,7 @@ app.delete("/data/:id", (req, res) => {
 // Handle put request for updating data 
 app.put("/data/:id", (req, res) => {
   const { id } = req.params;
-  const { description } = req.body; // Get the updated description
+  const { description } = req.body; 
 
   const currentData = readData();
   const taskIndex = currentData.findIndex((task) => task.id === id);

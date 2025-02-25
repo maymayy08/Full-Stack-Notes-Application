@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to fetch data and display it
     const fetchData = async () => {
       try {
-        const response = await fetch("/data"); // GET request to fetch data
-        const data = await response.json(); // Parse the response JSON
-        dataList.innerHTML = ""; // Clear the list before adding new items
+        const response = await fetch("/data"); 
+        const data = await response.json(); 
+        dataList.innerHTML = ""; 
         data.forEach((item) => {
           // Create a new list item for each task
           const li = document.createElement("li");
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
               const response = await deleteTask(item.id);
               if (response.ok) {
-                fetchData();  // Refresh the list of tasks
+                fetchData();  
               } else {
                 console.error("Failed to delete task");
               }
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
               try {
                 const response = await updateTask(item);
                 if (response.ok) {
-                  li.textContent = `${item.description}`; // Update the li text
+                  li.textContent = `${item.description}`; 
                   li.appendChild(updateButton);
-                  li.appendChild(deleteButton); // Re-append the buttons after updating
+                  li.appendChild(deleteButton); 
                   li.classList.remove("editing");
                 } else {
                   console.error("Failed to update task");
@@ -63,11 +63,11 @@ document.addEventListener("DOMContentLoaded", () => {
               // Set to editing mode by adding an input field
               const input = document.createElement("input");
               input.type = "text";
-              input.value = item.description; // Set input value to the current description
-              li.textContent = ''; // Clear the current text
-              li.appendChild(input); // Append the input field
+              input.value = item.description; 
+              li.textContent = ''; 
+              li.appendChild(input); 
               li.appendChild(updateButton);
-              li.appendChild(deleteButton); // Re-append the buttons
+              li.appendChild(deleteButton);
               li.classList.add("editing");
             }
           };
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Handle form submission to add new data
     dataForm.addEventListener("submit", async (event) => {
-      event.preventDefault(); // Prevent the form from submitting normally
+      event.preventDefault(); 
       const description = dataInput.value.trim(); // Get the input value
   
       if (!description) {
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     };
   
-    // Function to update a task
+    //  Update the task
     const updateTask = async (item) => {
       try {
         const response = await fetch(`/data/${item.id}`, {
@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ description: item.description }), // Send updated description
+          body: JSON.stringify({ description: item.description }), 
         });
   
         if (response.ok) {
